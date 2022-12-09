@@ -1,17 +1,24 @@
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+export default function Header({setFooterStatus, setSelecionado, footerStatus}) {
 
-export default function Header(){
 
-    return (
-    <Container>
+    return(
         
-    </Container>
-
+        <Container>
+       
+            <Link to="/" style={{textDecoration:'none'}}>
+                <p onClick={() => {
+                    setFooterStatus({show: false, title: '', posterURL: '', weekday: '', date: '', time: ''})
+                    setSelecionado({ids: [], seats:[], name:'', cpf:''})
+                    }}>
+                    CINEFLEX
+                </p>
+            </Link>     
+        </Container>
     )
-
 }
-
 
 const Container = styled.div`
     width: 100%;
@@ -25,32 +32,11 @@ const Container = styled.div`
     top: 0;
     left: calc(100vw/2 - width/2);
     z-index: 1;
-    h1 {
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    p {
         color: #e8833a;
-        font-weight: 400;
+        font-weight: 300;
         font-size: 34px;
         line-height: 40px;
     }
 `
-
-// const Return = styled.div`
-//     position: absolute;
-//     width:30px;
-//     height:30px;
-//     border-radius: 50%;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     background-color: #e8833a;
-//     color: #c3cfd9;
-//     font-weight: 400;
-//     font-size: 30px;
-//     left: 60px;
-//     cursor: pointer;
-//     &:hover{
-//         background-color: #b3632a;
-//     }
-//     &:active{
-//         transform: translateY(2px);
-//     }
-// `

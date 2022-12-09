@@ -51,5 +51,11 @@ const GlobalStyle = createGlobalStyle`
     input:focus, textarea:focus, select:focus{
 	    outline: none;
     }
+    body {
+    background-color: grey;
+    font-family: Roboto, sans-serif;
+}
 `;
+
+
 export default GlobalStyle
