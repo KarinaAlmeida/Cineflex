@@ -6,18 +6,19 @@ import styled from "styled-components";
 
 export default function Assentos ({setFooterStatus, footerStatus, selecionado, setSelecionado}) {
 
-    const { sessãoId } = useParams();
+    const { idSessao } = useParams();
 
-    const[assento, setAssento] = useState([]);
+    const[assento, setAssento] = useState(undefined);
 
-    const legenda = [    {class:<Selecionado />, title:'Selecionado'},
-    {class:<Disponivel />, title:'Disponível'}, 
-    {class:<Indisponivel />, title:'Indisponível'}
-];
+    const legenda = [   {class:<Selecionado />, title:'Selecionado'},
+                        {class:<Disponivel />, title:'Disponível'}, 
+                        {class:<Indisponivel />, title:'Indisponível'}
+                    ];
 
     useEffect(() => {
         setSelecionado({ids: [], seats:[], name:'', cpf:''})
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessãoId}/seats`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`);
+        
 
         promise.then(obj => {
             setFooterStatus({...footerStatus, show: true});
@@ -27,27 +28,28 @@ export default function Assentos ({setFooterStatus, footerStatus, selecionado, s
     }, []);
 
 
-    if (assento.length === 0){
+    if (assento === undefined){
         return(<Carregando>Carregando...</Carregando>)
     }
 
 
     function Cadeira({ isAvailable, name, id }) {
 
+        console.log(isAvailable)
         switch (isAvailable) {
             case true:
-                return (<Disponivel onClick={() => Reservado(name, id, true)}>{name}</Disponivel>);
+                return (<Disponivel onClick={() => reservado(name, id, true)}>{name}</Disponivel>);
             case false:
                 return (<Indisponivel onClick={() => alert('Assento indisponível!!')}>{name}</Indisponivel>);
             case 'selecionado':
-                return (<Selecionado onClick={() => Reservado(name, id, 'selecionado')}>{name}</Selecionado>);
+                return (<Selecionado onClick={() => reservado(name, id, 'selecionado')}>{name}</Selecionado>);
             default:
                 return(<>Erro!</>);
         }
     }
 
 
-    function Reservado(name, id, status){
+    function reservado(name, id, status){
  
         const iArray = Number(name) - 1;
 
@@ -82,7 +84,7 @@ export default function Assentos ({setFooterStatus, footerStatus, selecionado, s
 
             <AssentosStyled>
                 
-                {assento.seats.map(ass => <Cadeira key={ass.id} id={ass.id} name={ass.name} isAvailable={ass.isAvailable}/>)}
+                {assento.seats.map(ass => <Cadeira data-test="seat" key={ass.id} id={ass.id} name={ass.name} isAvailable={ass.isAvailable}/>)}
 
             </AssentosStyled>
 
@@ -97,7 +99,7 @@ export default function Assentos ({setFooterStatus, footerStatus, selecionado, s
 
             </Legenda>
 
-            <Input selecionado={selecionado} setSelected={setSelecionado} footerStatus={footerStatus} setFooterStatus={setFooterStatus}/>
+            <Input selecionado={selecionado} setSelecionado={setSelecionado} footerStatus={footerStatus} setFooterStatus={setFooterStatus}/>
             
         </Container>
     )
@@ -147,7 +149,7 @@ width: 100%;
     }
 
 `
-const Selecionado = styled.div`
+const Disponivel = styled.div`
     background: #C3CFD9;
     border-color: #7B8B99;
     cursor: pointer;
@@ -157,12 +159,12 @@ const Selecionado = styled.div`
     
 `
 
-const Disponivel = styled.div`
+const Indisponivel = styled.div`
     background: #FBE192;
     border-color: #F7C52B;
 `
 
-const Indisponivel = styled.div`
+const Selecionado = styled.div`
     background: #8DD7CF;
     border-color: #1AAE9E;
     cursor: pointer;

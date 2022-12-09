@@ -41,8 +41,8 @@ export default function App() {
         <Route path="/assentos/:idSessao" element={<Assentos setFooterStatus={setFooterStatus} footerStatus={footerStatus}
                                                                 selecionado={selecionado} setSelecionado={setSelecionado} />} />
                                                                 
-        {/* <Route path="/sucesso" element={<Sucesso setFooterStatus={setFooterStatus} footerStatus={footerStatus}
-                                                        selecionado={selecionado}setSelecionado={setSelecionado} />} /> */}
+        <Route path="/sucesso" element={<Sucesso setFooterStatus={setFooterStatus} footerStatus={footerStatus}
+                                                        selecionado={selecionado}setSelecionado={setSelecionado} />} />
 
       </Routes>
 

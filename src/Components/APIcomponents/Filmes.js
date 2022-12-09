@@ -46,7 +46,7 @@ export default function Filmes ({footerStatus, setFooterStatus}) {
         <Container>
             <h1>Selecione o filme</h1>
             <div>
-                {filmes.map(filme => <Filme filmeId={filme.id} titulo={filme.title} posterURL={filme.posterURL}/>)}
+                {filmes.map(filme => <Filme data-test="movie" filmeId={filme.id} titulo={filme.title} posterURL={filme.posterURL}/>)}
             </div>
         </Container>
     )

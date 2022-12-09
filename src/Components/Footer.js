@@ -7,7 +7,7 @@ export default function Footer({footerStatus}) {
     if (show === true) {
         return (
 
-            <Container>
+            <Container data-test="footer">
                 <Poster>
                     <img src={posterURL} alt={title}/>
                 </Poster>

@@ -18,7 +18,6 @@ export default function Sessões ({setFooterStatus, footerStatus}){
 
         promise.then(obj => {
             setSessões(obj.data);
-            
 
         })
 
@@ -30,9 +29,9 @@ export default function Sessões ({setFooterStatus, footerStatus}){
     }
 
 
-    function Sessão ({name, sessãoId, weekday, date}) {
+    function Sessão ({name, idSessao, weekday, date}) {
         return(
-            <Link to={`/assentos/${sessãoId}`} style={{textDecoration:'none'}}>
+            <Link to={`/assentos/${idSessao}`} style={{textDecoration:'none'}}>
                 <Button onClick={() => {
                     footerStatus.weekday = weekday;
                     footerStatus.date = date;
@@ -50,8 +49,8 @@ export default function Sessões ({setFooterStatus, footerStatus}){
             <div>
                 <h2>{`${weekday} - ${date}`}</h2>
                 <ShowtimeStyled>
-                    {showtimes.map((showtime => <Sessão 
-                        sessãoId={showtime.id}
+                    {showtimes.map((showtime => <Sessão data-test="showtime"
+                        idSessao={showtime.id}
                         name={showtime.name}
                         weekday={weekday}
                         date={date}/>
@@ -64,7 +63,7 @@ export default function Sessões ({setFooterStatus, footerStatus}){
     return (
         <Container>
             <h1>Selecione o horário</h1>
-            {sessões.days.map(day => <Data showtimes={day.showtimes} date={day.date} weekday={day.weekday}/>)}
+            {sessões.days.map(day => <Data data-test="movie-day" showtimes={day.showtimes} date={day.date} weekday={day.weekday}/>)}
         </Container>
     )
 
