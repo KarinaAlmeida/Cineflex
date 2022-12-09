@@ -38,10 +38,10 @@ export default function App() {
         <Route path="/sessoes/:idFilme" element={<Sessões setFooterStatus={setFooterStatus} footerStatus={footerStatus}
                                                                 selecionado={selecionado} setSelecionado={setSelecionado} />} />
 
-        {/* <Route path="/assentos/:idSessao" element={<Assentos setFooterStatus={setFooterStatus} footerStatus={footerStatus}
+        <Route path="/assentos/:idSessao" element={<Assentos setFooterStatus={setFooterStatus} footerStatus={footerStatus}
                                                                 selecionado={selecionado} setSelecionado={setSelecionado} />} />
                                                                 
-        <Route path="/sucesso" element={<Sucesso setFooterStatus={setFooterStatus} footerStatus={footerStatus}
+        {/* <Route path="/sucesso" element={<Sucesso setFooterStatus={setFooterStatus} footerStatus={footerStatus}
                                                         selecionado={selecionado}setSelecionado={setSelecionado} />} /> */}
 
       </Routes>

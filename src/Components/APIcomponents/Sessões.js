@@ -18,6 +18,7 @@ export default function Sessões ({setFooterStatus, footerStatus}){
 
         promise.then(obj => {
             setSessões(obj.data);
+            
 
         })
 
