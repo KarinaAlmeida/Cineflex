@@ -38,11 +38,11 @@ export default function Assentos ({setFooterStatus, footerStatus, selecionado, s
         console.log(isAvailable)
         switch (isAvailable) {
             case true:
-                return (<Disponivel onClick={() => reservado(name, id, true)}>{name}</Disponivel>);
+                return (<Disponivel data-test="seat" onClick={() => reservado(name, id, true)}>{name}</Disponivel>);
             case false:
-                return (<Indisponivel onClick={() => alert('Assento indisponível!!')}>{name}</Indisponivel>);
+                return (<Indisponivel data-test="seat" onClick={() => alert('Assento indisponível!!')}>{name}</Indisponivel>);
             case 'selecionado':
-                return (<Selecionado onClick={() => reservado(name, id, 'selecionado')}>{name}</Selecionado>);
+                return (<Selecionado data-test="seat" onClick={() => reservado(name, id, 'selecionado')}>{name}</Selecionado>);
             default:
                 return(<>Erro!</>);
         }
@@ -82,7 +82,7 @@ export default function Assentos ({setFooterStatus, footerStatus, selecionado, s
         <Container>
             <h1>Selecione o(s) assento(s)</h1>
 
-            <AssentosStyled data-test="seat">
+            <AssentosStyled>
                 
                 {assento.seats.map(ass => <Cadeira key={ass.id} id={ass.id} name={ass.name} isAvailable={ass.isAvailable}/>)}
 

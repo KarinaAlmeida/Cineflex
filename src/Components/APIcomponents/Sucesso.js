@@ -10,10 +10,10 @@ export default function Sucesso ({setFooterStatus, footerStatus,
             <Container>
                 <h1>Pedido feito com sucesso!</h1>
     
-                <div data-test="movie-info">
+                <div>
                     <h2>Filme e Sessão</h2>
-                    <h3>{footerStatus.title}</h3>
-                    <p>{`${footerStatus.date} ${footerStatus.time}`}</p>
+                    <h3 data-test="movie-info">{footerStatus.title}</h3>
+                    <p data-test="movie-info">{`${footerStatus.date} ${footerStatus.time}`}</p>
                 </div>
     
                 <div data-test="seats-info">
@@ -21,14 +21,14 @@ export default function Sucesso ({setFooterStatus, footerStatus,
                     {selecionado.seats.map((seat, index) => <p key={index}>Assento {seat}</p>)}
                 </div>
     
-                <div data-test="client-info">
+                <div>
                     <h2>Comprador</h2>
-                    <p>Nome: {selecionado.name}</p>
-                    <p>CPF: {selecionado.cpf}</p>
+                    <p data-test="client-info">Nome: {selecionado.name}</p>
+                    <p data-test="client-info">CPF: {selecionado.cpf}</p>
                 </div>
     
-                <Link to="/" style={{textDecoration:'none'}}>
-                    <button data-test="go-home-btn" onClick={() => {
+                <Link data-test="go-home-btn" to="/" style={{textDecoration:'none'}}>
+                    <button onClick={() => {
                         setFooterStatus({show: false, title: '', posterURL: '', weekday: '', date: '', time: ''})
                         setSelecionado({ids: [], seats:[], name:'', cpf:''})
                     }}>
