@@ -48,8 +48,8 @@ export default function Sessões ({setFooterStatus, footerStatus}){
         return(
             <div>
                 <h2>{`${weekday} - ${date}`}</h2>
-                <ShowtimeStyled>
-                    {showtimes.map((showtime => <Sessão data-test="showtime"
+                <ShowtimeStyled data-test="showtime">
+                    {showtimes.map((showtime => <Sessão
                         idSessao={showtime.id}
                         name={showtime.name}
                         weekday={weekday}
@@ -61,9 +61,9 @@ export default function Sessões ({setFooterStatus, footerStatus}){
     }
 
     return (
-        <Container>
+        <Container data-test="movie-day">
             <h1>Selecione o horário</h1>
-            {sessões.days.map(day => <Data data-test="movie-day" showtimes={day.showtimes} date={day.date} weekday={day.weekday}/>)}
+            {sessões.days.map(day => <Data showtimes={day.showtimes} date={day.date} weekday={day.weekday}/>)}
         </Container>
     )
 

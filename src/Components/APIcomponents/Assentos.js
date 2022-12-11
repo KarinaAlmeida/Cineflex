@@ -82,9 +82,9 @@ export default function Assentos ({setFooterStatus, footerStatus, selecionado, s
         <Container>
             <h1>Selecione o(s) assento(s)</h1>
 
-            <AssentosStyled>
+            <AssentosStyled data-test="seat">
                 
-                {assento.seats.map(ass => <Cadeira data-test="seat" key={ass.id} id={ass.id} name={ass.name} isAvailable={ass.isAvailable}/>)}
+                {assento.seats.map(ass => <Cadeira key={ass.id} id={ass.id} name={ass.name} isAvailable={ass.isAvailable}/>)}
 
             </AssentosStyled>
 
