@@ -32,12 +32,12 @@ export default function Sessões ({setFooterStatus, footerStatus}){
     function Sessão ({name, idSessao, weekday, date}) {
         return(
             <Link to={`/assentos/${idSessao}`} style={{textDecoration:'none'}}>
-                <Button onClick={() => {
+                <Button data-test="showtime" onClick={() => {
                     footerStatus.weekday = weekday;
                     footerStatus.date = date;
                     footerStatus.time = name
                 }}>
-                 <p data-test="showtime" style={{textDecoration:'none'}}>{name}</p> 
+                 <p style={{textDecoration:'none'}}>{name}</p> 
                 </Button>
             </Link>
         )  
@@ -46,8 +46,8 @@ export default function Sessões ({setFooterStatus, footerStatus}){
 
     function Data({showtimes, date, weekday}){
         return(
-            <div>
-                <h2 data-test="movie-day">{`${weekday} - ${date}`}</h2>
+            <div data-test="movie-day">
+                <h2 >{`${weekday} - ${date}`}</h2>
                 <ShowtimeStyled >
                     {showtimes.map((showtime => <Sessão
                         idSessao={showtime.id}

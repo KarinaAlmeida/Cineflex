@@ -7,12 +7,12 @@ export default function Footer({footerStatus}) {
     if (show === true) {
         return (
 
-            <Container>
+            <Container data-test="footer">
                 <Poster>
-                    <img data-test="footer" src={posterURL} alt={title}/>
+                    <img src={posterURL} alt={title}/>
                 </Poster>
                 <TextInfo>
-                    <h3 data-test="footer" >{title}</h3>
+                    <h3>{title}</h3>
                     
                     {weekday !== ''?
                     <h3>{`${weekday} - ${time}`}</h3> :
